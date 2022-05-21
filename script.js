@@ -40,13 +40,13 @@ function handleFiles(files) {
     var file = files[0]
     var reader = new FileReader()
     reader.onload = function () {
+        document.getElementById('out').innerHTML = ''
         let objResult = parseFromTxt(reader.result)
         for (let obj of objResult) {
             let p = document.createElement('p')
             p.innerText = JSON.stringify(obj)
             // `<b>DATE</b> -- ${cost['<DATE>'].slice(0, 4)}; <b>HIGH</b> -- ${cost['<HIGH>']}; <b>LOW</b> -- ${cost['<LOW>']}; <b>CLOSE</b> -- ${cost['<CLOSE>']}`
-            document.body.appendChild(p)
-
+            document.getElementById('out').appendChild(p)
         }
     }
     reader.readAsText(file)
